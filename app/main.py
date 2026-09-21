@@ -60,7 +60,8 @@ def get_user_history(user_id: int):
 
 @app.get("/api/recommend/{user_id}")
 def get_recommendations(user_id: int, model: str = "collaborative", n: int = 5):
-    if model not in models:
+    if not 1 <= n <= 100:
+        raise HTTPException(status_code=422, detail="n must be between 1 and 100.")
         raise HTTPException(status_code=400, detail=f"Model {model} not found.")
 
     try:
