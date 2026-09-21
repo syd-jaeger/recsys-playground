@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Recommendation Sandbox</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">MovieAI</div>
+        <div class="controls">
+            <label for="user-select">Simulate User:</label>
+            <select id="user-select">
+                <option value="">Select a user...</option>
+            </select>
+
+            <label for="model-select">Algorithm:</label>
+            <select id="model-select">
+                <option value="">Select a model...</option>
+            </select>
+
+            <button id="simulate-btn">Simulate</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="history-section" class="hidden">
+            <h2>User's Highly Rated Movies</h2>
+            <p>Based on their interaction history</p>
+            <div class="movie-grid" id="history-grid">
+                <!-- History cards will be injected here -->
+            </div>
+        </section>
+
+        <section id="recommendation-section" class="hidden">
+            <h2>Recommended for You</h2>
+            <p>Powered by <span id="current-model-display"></span></p>
+            <div class="movie-grid" id="recommendation-grid">
+                <!-- Recommendation cards will be injected here -->
+            </div>
+        </section>
+
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <p>Generating recommendations...</p>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
