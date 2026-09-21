@@ -67,8 +67,8 @@ def get_recommendations(user_id: int, model: str = "collaborative", n: int = 5):
     try:
         recs = models[model].recommend(user_id, n=n)
         return {"recommendations": recs}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    except Exception:
+        raise HTTPException(status_code=500, detail="Recommendation generation failed.")
 
 # Mount static files to serve the frontend
 app.mount("/", StaticFiles(directory="app/static", html=True), name="static")
