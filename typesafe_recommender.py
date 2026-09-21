@@ -31,8 +31,10 @@ def mock_fast_search(query: str, movies: list[str], top_k: int = 10) -> list[str
     scored_movies.sort(key=lambda x: x[1], reverse=True)
 
     # If no keywords matched, just pick random movies
+    if not scored_movies:
+        return []
     if scored_movies[0][1] == 0:
-        candidates = random.sample(movies, top_k)
+        candidates = random.sample(movies, min(top_k, len(movies)))
     else:
         candidates = [m[0] for m in scored_movies[:top_k]]
 
